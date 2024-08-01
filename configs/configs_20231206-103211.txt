@@ -1,0 +1,33 @@
+params: {'mode': 'end2end', 'batch_size': 8, 'epochs': 5, 'criterion': 'MSE', 'optimizer': 'Adam', 'lr': 0.1, 'momentum': 0.9, 'fake_trials': False, 'fake_percentage': 0.5, 'nn_epochs': 5, 'train': True, 'validate': True, 'plot_emg': False, 'debug': False, 'img_encoder_path': 'models/autoencoders/Image/trained_img_encoders/ckpt0.pt', 'emg_encoder_path': 'models/autoencoders/EMG/trained_emg_encoders/ckpt0.pt', 'device': 'cpu', 'dataset_emg': True, 'dataset_frame': True, 'only_us': False, 'emg_features': 83, 'plot_label': 'End to End NN', 'train_len': 2102, 'test_len': 311}
+model: ForcePredictionNN(
+  (conv_emg): Sequential(
+    (0): Conv1d(1, 2, kernel_size=(15,), stride=(2,), padding=(1,))
+    (1): LeakyReLU(negative_slope=0.01)
+    (2): BatchNorm1d(2, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (3): MaxPool1d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (4): Flatten(start_dim=1, end_dim=-1)
+  )
+  (conv_frame_1): Sequential(
+    (0): Conv2d(1, 2, kernel_size=(15, 9), stride=(1, 1), padding=(1, 1))
+    (1): LeakyReLU(negative_slope=0.01)
+    (2): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (3): Conv2d(2, 2, kernel_size=(11, 5), stride=(1, 1), padding=(1, 1))
+    (4): LeakyReLU(negative_slope=0.01)
+    (5): BatchNorm2d(2, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (6): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  )
+  (conv_frame_2): Sequential(
+    (0): Conv2d(2, 2, kernel_size=(7, 3), stride=(1, 1), padding=(1, 1))
+    (1): LeakyReLU(negative_slope=0.01)
+    (2): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (3): Conv2d(2, 2, kernel_size=(3, 3), stride=(1, 1))
+    (4): LeakyReLU(negative_slope=0.01)
+    (5): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (6): BatchNorm2d(2, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (flatt_frame): Flatten(start_dim=1, end_dim=-1)
+  (out): Sequential(
+    (0): Linear(in_features=84, out_features=1, bias=True)
+    (1): Dropout(p=0.01, inplace=False)
+  )
+)

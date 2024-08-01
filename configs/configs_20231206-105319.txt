@@ -1,0 +1,17 @@
+params: {'mode': 'encoded_US', 'train_val_split': 0.9, 'batch_size': 8, 'epochs': 5, 'criterion': 'MSE', 'optimizer': 'Adam', 'lr': 0.1, 'momentum': 0.9, 'fake_trials': False, 'fake_percentage': 0.5, 'nn_epochs': 5, 'train': True, 'validate': True, 'plot_emg': False, 'debug': False, 'img_encoder_path': 'models/autoencoders/Image/trained_img_encoders/ckpt0.pt', 'emg_encoder_path': 'models/autoencoders/EMG/trained_emg_encoders/ckpt0.pt', 'device': 'cpu', 'plot_hist': True, 'dataset_emg': True, 'dataset_frame': True, 'only_us': False, 'emg_features': 83, 'plot_label': 'Encoded US Features', 'train_len': 2102, 'test_len': 311}
+model: ImageEncoder(
+  (conv_frame_1): Sequential(
+    (0): Conv2d(1, 2, kernel_size=(15, 7), stride=(2, 2), padding=(1, 1))
+    (1): LeakyReLU(negative_slope=0.01)
+    (2): BatchNorm2d(2, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (3): Conv2d(2, 2, kernel_size=(11, 5), stride=(2, 2), padding=(1, 1))
+    (4): LeakyReLU(negative_slope=0.01)
+    (5): BatchNorm2d(2, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (6): Conv2d(2, 2, kernel_size=(9, 3), stride=(2, 2), padding=(1, 1))
+    (7): LeakyReLU(negative_slope=0.01)
+    (8): BatchNorm2d(2, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (9): Conv2d(2, 2, kernel_size=(5, 3), stride=(2, 2), padding=(1, 1))
+    (10): LeakyReLU(negative_slope=0.01)
+    (11): BatchNorm2d(2, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+)
